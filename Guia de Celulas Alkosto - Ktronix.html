@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>⚙️ Reglas de Juego del Equipo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #003870;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1{
+            font-size: 1.8rem;
+        }
+
+        nav {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            width: 260px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(0);
+            z-index: 1000;
+        }
+
+        nav.oculto {
+            transform: translateX(-100%);
+        }
+
+        nav.visible {
+            transform: translateX(0);
+        }
+
+
+        nav h2 {
+            font-size: 1.2rem;
+            color: #003870;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0.75rem 0;
+        }
+
+        nav ul li a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        main {
+            margin-left: 280px;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        main h1 {
+            font-size: 2.2rem;
+            color: #003870;
+            margin-bottom: 1.5rem;
+        }
+
+        main h2 {
+            font-size: 1.5rem;
+            color: #003870;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        main h3 {
+            font-size: 1.2rem;
+            color: #003870;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        thead tr {
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: 500;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        strong {
+            color: #003870;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: disc inside;
+            padding-left: 0;
+        }
+
+        ul li{
+            margin-bottom: 0.5rem;
+        }
+
+        ol {
+            padding-left: 1.5rem;
+        }
+
+        ol li{
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: #003870;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .menu-btn {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            padding-left: 0.7rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .menu-btn.abierto {
+            background-color: #0056b3;
+        }
+
+        #indice-nav {
+            position: sticky;
+            top: 80px;
+            margin-bottom: 20px;
+        }
+
+        #indice-nav h2 {
+            font-size: 1.1rem;
+            color: #003870;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        #indice-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #indice-nav ul li {
+            margin: 0.75rem 0;
+        }
+
+        #indice-nav ul li a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+        }
+
+        #indice-nav ul li a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+
+        @media (max-width: 768px) {
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                overflow-y: auto;
+                z-index: 1000;
+            }
+
+            nav.oculto {
+                transform: translateX(-100%);
+            }
+
+            nav.visible {
+                transform: translateX(0);
+            }
+
+            main {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            #indice-nav {
+                display: none;
+            }
+        }
+
+        .ejemplos-practicos {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .ejemplos-practicos h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #003870;
+        }
+
+        .ejemplos-practicos ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .ejemplos-practicos p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        #equipo-trabajo {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+        }
+
+        #equipo-trabajo .celula {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #equipo-trabajo .celula h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #003870;
+            text-align: center;
+        }
+
+        #equipo-trabajo .miembro-equipo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        #equipo-trabajo .miembro-equipo:last-child {
+            border-bottom: none;
+        }
+
+        #equipo-trabajo .miembro-equipo i {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            font-size: 2rem;
+            color: #007bff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #equipo-trabajo .miembro-equipo span {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        #equipo-trabajo .celula:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        #enlace-estimacion {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        #enlace-estimacion:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .boton-estimacion {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .boton-estimacion a {
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .boton-estimacion a:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>⚙️ Reglas de Juego del Equipo</h1>
+    </header>
+
+    <button class="menu-btn" id="menu-btn">☰ Menú</button>
+
+    <nav id="menu" class="oculto">
+        <h2>📑 Índice</h2>
+        <ul>
+            <li><a href="#equipo-trabajo-seccion">Equipo de Trabajo</a></li>
+            <li><a href="#guia-daily-scrum">Guía Daily Scrum</a></li>
+            <li><a href="#guia-puntuacion-seccion">¿Cómo puntuamos las HU?</a></li>
+        </ul>
+    </nav>
+
+    <nav id="indice-nav">
+            <h2>Índice</h2>
+            <ul>
+                <li><a href="#equipo-trabajo-seccion">Equipo de Trabajo</a></li>
+                <li><a href="#guia-daily-scrum">Guía Daily Scrum</a></li>
+                <li><a href="#guia-puntuacion-seccion">¿Cómo puntuamos las HU?</a></li>
+            </ul>
+    </nav>
+
+    <main>
+        <section id="equipo-trabajo-seccion">
+            <h2>🧑‍💻 Equipo de Trabajo</h2>
+            <div id="equipo-trabajo">
+                <div class="celula">
+                    <h3>Célula 1</h3>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user-tie"></i>
+                        <span><strong>Luciana:</strong> Líder de Equipo (LT) - 0.5 tiempo</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Rodrigo:</strong> Desarrollador (DEV 1) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Belén:</strong> Desarrollador (DEV 2) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Joaco:</strong> Desarrollador (DEV 3) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Brian:</strong> Desarrollador (DEV 4) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user-check"></i>
+                        <span><strong>Wilmer:</strong> Quality Assurance (QA 1) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user-check"></i>
+                        <span><strong>Sandra:</strong> Quality Assurance (QA 2) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                         <i class="fas fa-user-check"></i>
+                        <span><strong>Vlado:</strong> Quality Assurance (QA 3) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user-check"></i>
+                        <span><strong>Santi:</strong> Quality Assurance (QA 4) - 50%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-users"></i>
+                        <span><strong>Daniel / Juan:</strong> Business Analyst (BA) / Scrum Master - 50%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user-tie"></i>
+                        <span><strong>David:</strong> Líder de Equipo Interno (LT Interno) - 25%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user"></i>
+                        <span><strong>Alison:</strong> Product Owner (PO) - 50%</span>
+                    </div>
+                </div>
+                <div class="celula">
+                    <h3>Célula 2</h3>
+                    <div class="miembro-equipo">
+                         <i class="fas fa-user-tie"></i>
+                        <span><strong>Luciana:</strong> Líder de Equipo (LT) - 0.5 tiempo</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Tan:</strong> Desarrollador (DEV 1) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Sebas:</strong> Desarrollador (DEV 2) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Cristian:</strong> Desarrollador (DEV 3) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Dami:</strong> Desarrollador (DEV 4) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user-check"></i>
+                        <span><strong>Aura:</strong> Quality Assurance (QA 1) - 100%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user-check"></i>
+                        <span><strong>Steffy:</strong> Quality Assurance (QA 2) - 100%</span>
+                    </div>
+                     <div class="miembro-equipo">
+                        <i class="fas fa-user-check"></i>
+                        <span><strong>Santi:</strong> Quality Assurance (QA 4) - 50%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-users"></i>
+                        <span><strong>Daniel / Juan:</strong> Business Analyst (BA) / Scrum Master - 50%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                         <i class="fas fa-user-tie"></i>
+                        <span><strong>David:</strong> Líder de Equipo Interno (LT Interno) - 25%</span>
+                    </div>
+                    <div class="miembro-equipo">
+                        <i class="fas fa-user"></i>
+                        <span><strong>Alison:</strong> Product Owner (PO) - 50%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="guia-daily-scrum" style="display: none;">
+            <h2>📆 Guía Oficial para el Daily SCRUM (Versión Virtual – 15 Minutos)</h2>
+
+            <div class="section">
+                <h3>🎯 Objetivo General</h3>
+                <p>Mantener al equipo sincronizado, identificar bloqueos tempranamente, promover la colaboración y asegurar el progreso continuo del sprint en solo 15 minutos diarios.</p>
+            </div>
+
+            <div class="section">
+                <h3>🧩 Estructura del Daily</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tiempo</th>
+                            <th>Actividad</th>
+                            <th>Responsable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0:00 - 0:01</td><td>Inicio puntual y encuadre</td><td>Facilitador rotativo</td></tr>
+                        <tr><td>0:01 - 0:03</td><td>Revisión visual del tablero (sin mover tareas)</td><td>Scrum Master</td></tr>
+                        <tr><td>0:03 - 0:12</td><td>Ronda de actualizaciones (máx. 1 min por persona)</td><td>Equipo</td></tr>
+                        <tr><td>0:12 - 0:14</td><td>Registro de bloqueos y seguimiento</td><td>Scrum Master</td></tr>
+                        <tr><td>0:14 - 0:15</td><td>Cierre del daily y confirmación de follow-ups</td><td>Scrum Master</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>🔁 ¿Qué dice cada integrante?</h3>
+                <ul>
+                    <li>✅ ¿Qué hice ayer?</li>
+                    <li>🎯 ¿Qué voy a hacer hoy?</li>
+                    <li>⚠️ ¿Estoy bloqueado en algo?</li>
+                </ul>
+                <p><strong>⏰ Tiempo máximo por persona:</strong> 1 minuto</p>
+                <p>Si el tema no puede resolverse en el Daily: <code>“Estoy atascado con X, pero lo hablamos luego.”</code></p>
+            </div>
+
+            <div class="section">
+                <h3>💬 Protocolo "Lo hablamos luego"</h3>
+                <ul>
+                    <li>El <strong>Scrum Master</strong> registra los temas que requieren seguimiento.</li>
+                    <li>Decide si se hace un <strong>micro follow-up inmediato</strong> (5-10 min después del daily), o si se agenda una reunión con los involucrados.</li>
+                    <li>El Scrum Master asegura que se le dé <strong>seguimiento real</strong> al tema, idealmente antes del siguiente Daily.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>🧭 Reglas del Scrum Master</h3>
+                <ul>
+                    <li>Supervisa el tablero pero <strong>no mueve tareas</strong>.</li>
+                    <li>Es responsable del <strong>protocolo de seguimiento</strong> y del marco del Daily.</li>
+                    <li>En caso de ausencia, debe <strong>delegar temporalmente</strong> el rol.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>🎙 Facilitador del Daily (Rol rotativo)</h3>
+                <ul>
+                    <li>Rota semanalmente entre los miembros del equipo.</li>
+                    <li>Dirige la sesión y cuida el tiempo.</li>
+                    <li><strong>No realiza acciones adicionales</strong>.</li>
+                    <li>Debe asistir toda la semana o delegar previamente si no puede.</li>
+                </ul>
+                <h4>📋 Lista de Rotación</h4>
+                <p><strong>Célula 1:</strong> Rock → Wilmer → Joaco → Bri → Vlado → Bele → Santi → Sandra</p>
+                <p><strong>Célula 2:</strong> Tan → Aura → Damian → Stefy → Cristian → Sebastian → Santi → Luciana</p>
+            </div>
+
+            <div class="section">
+                <h3>✅ Buenas prácticas para el Daily Virtual</h3>
+                <ul>
+                    <li>Ingresar <strong>2 minutos antes</strong> de la hora.</li>
+                    <li><strong>Micrófono en silencio</strong> mientras no se habla.</li>
+                    <li><strong>Escuchar activamente</strong> al resto del equipo.</li>
+                    <li><strong>Anotar compromisos</strong> personales.</li>
+                    <li>Mantener el <strong>foco</strong>: todos queremos salir en 15 minutos.</li>
+                    <li>No es obligatorio <strong>prender cámara</strong>, pero sí estar presente, atento y con el tablero actualizado.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="guia-puntuacion-seccion" style="display: none;">
+            <h2>🧮 Guía de Estimación por Criterios en Story Points</h2>
+
+            <h3>🎯 Objetivo</h3>
+            <p>Transformar criterios cualitativos en una estimación cuantitativa de esfuerzo (en <strong>Puntos de Historia</strong>) que luego se traduzca en tiempo estimado (<strong>días</strong> y <strong>horas</strong>).</p>
+
+            <h3>📋 Criterios de Evaluación</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criterio</th>
+                        <th>Pregunta Guía</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Complejidad técnica</strong></td>
+                        <td>¿Qué tan difícil es técnicamente implementar esta historia?</td>
+                        <td>Muy baja</td>
+                        <td>Baja</td>
+                        <td>Moderada</td>
+                        <td>Alta</td>
+                        <td>Muy alta</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Esfuerzo estimado</strong></td>
+                        <td>¿Cuánto trabajo implica construir esta historia?</td>
+                        <td>Muy bajo</td>
+                        <td>Bajo</td>
+                        <td>Moderado</td>
+                        <td>Alto</td>
+                        <td>Muy alto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Riesgo / Incertidumbre</strong></td>
+                        <td>¿Qué tanto sabemos sobre lo que se debe hacer? ¿Hay posibles bloqueos?</td>
+                        <td>Muy bajo</td>
+                        <td>Bajo</td>
+                        <td>Moderada</td>
+                        <td>Alto</td>
+                        <td>Muy alto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Impacto en el negocio</strong></td>
+                        <td>¿Qué tan relevante es esta historia para el cliente o los objetivos del sprint?</td>
+                        <td>Muy bajo</td>
+                        <td>Bajo</td>
+                        <td>Moderado</td>
+                        <td>Alto</td>
+                        <td>Muy alto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dependencias</strong></td>
+                        <td>¿Depende de otros equipos o procesos?</td>
+                        <td>Sin dependencias</td>
+                        <td>Bajas</td>
+                        <td>Moderadas</td>
+                        <td>Altas</td>
+                        <td>Muy altas</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>🧠 Cálculo de Story Points</h3>
+            <ol>
+                <li>Sumar los valores numéricos de los 5 criterios.</li>
+                <li>Promediar (dividir entre 5).</li>
+                <li>Redondear al entero más cercano.</li>
+                <li>Aplicar esta tabla de conversión:</li>
+            </ol>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Promedio</th>
+                        <th>Puntos Estimados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>2</td></tr>
+                    <tr><td>2</td><td>3</td></tr>
+                    <tr><td>3</td><td>5</td></tr>
+                    <tr><td>4</td><td>8</td></tr>
+                    <tr><td>5</td><td>13</td></tr>
+                    <tr><td>>5</td><td>21</td></tr>
+                </tbody>
+            </table>
+
+            <h3>⏱️ Conversión de Puntos a Tiempo</h3><table>
+                <thead>
+                    <tr>
+                        <th>Puntos</th>
+                        <th>Días</th>
+                        <th>Horas</th>
+                        <th>Promedio de horas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>2</td><td>1</td><td>1–8</td><td>5</td></tr>
+                    <tr><td>3</td><td>2–3</td><td>16–24</td><td>20</td></tr>
+                    <tr><td>5</td><td>4–5</td><td>32–40</td><td>36</td></tr>
+                    <tr><td>8</td><td>6–7</td><td>48–56</td><td>52</td></tr>
+                    <tr><td>13</td><td>8–10</td><td>64–80</td><td>72</td></tr>
+                    <tr><td>21</td><td>>10</td><td>>80</td><td>—</td></tr>
+                </tbody>
+            </table>
+
+            <section class="ejemplos-practicos">
+                <h3>🧪 Ejemplos Prácticos</h3>
+
+                <p><strong>Ejemplo 1</strong>:</p>
+                <ul>
+                    <li>Complejidad: 1</li>
+                    <li>Esfuerzo: 1</li>
+                    <li>Riesgo: 1</li>
+                    <li>Impacto: 1</li>
+                    <li>Dependencias: 1</li>
+                </ul>
+                <p><strong>Total:</strong> 5 → <strong>Promedio:</strong> 1 → <strong>Puntos:</strong> 2 → <strong>Tiempo estimado:</strong> 1 día / ~5 horas</p>
+
+                <p><strong>Ejemplo 2</strong>:</p>
+                <ul>
+                    <li>Complejidad: 2</li>
+                    <li>Esfuerzo: 2</li>
+                    <li>Riesgo: 2</li>
+                    <li>Impacto: 3</li>
+                    <li>Dependencias: 2</li>
+                </ul>
+                <p><strong>Total:</strong> 11 → <strong>Promedio:</strong> 2.2 → <strong>Puntos:</strong> 3 → <strong>Tiempo estimado:</strong> 2-3 días / ~20 horas</p>
+
+                <p><strong>Ejemplo 3</strong>:</p>
+                <ul>
+                    <li>Complejidad: 4</li>
+                    <li>Esfuerzo: 4</li>
+                    <li>Riesgo: 3</li>
+                    <li>Impacto: 5</li>
+                    <li>Dependencias: 4</li>
+                </ul>
+                <p><strong>Total:</strong> 20 → <strong>Promedio:</strong> 4 → <strong>Puntos:</strong> 8 → <strong>Tiempo estimado:</strong> 6-7 días / ~52 horas</p>
+
+                <div class="boton-estimacion">
+                    <a id="enlace-estimacion" href="https://celulaacdc.github.io/mi-formulario-estimacion/" target="_blank">
+                        <i class="fas fa-calculator"></i>
+                        <span>Ir al Formulario de Estimación</span>
+                    </a>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Reglas de Juego del Equipo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        const navLinks = document.querySelectorAll('#menu a');
+        const secciones = document.querySelectorAll('main > section');
+        const indiceNav = document.getElementById('indice-nav');
+        const indiceLinks = document.querySelectorAll('#indice-nav a');
+
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('oculto');
+            menu.classList.toggle('visible');
+            menuBtn.classList.toggle('abierto');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('oculto');
+                menu.classList.remove('visible');
+                menuBtn.classList.remove('abierto');
+            });
+        });
+
+        function updateActiveNavLink() {
+            let currentSectionId = '';
+            secciones.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            indiceLinks.forEach(link => {link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').slice(1);
+                const targetSection = document.getElementById(targetId);
+
+                secciones.forEach(sec => sec.style.display = 'none');
+                targetSection.style.display = 'block';
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                navLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelector('a[href="#equipo-trabajo-seccion"]').click();
+    </script>
+</body>
+</html>
