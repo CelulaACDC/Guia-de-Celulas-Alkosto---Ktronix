@@ -413,6 +413,7 @@
             <li><a href="#equipo-trabajo-seccion">Equipo de Trabajo</a></li>
             <li><a href="#guia-daily-scrum">Guía Daily Scrum</a></li>
             <li><a href="#guia-puntuacion-seccion">¿Cómo puntuamos las HU?</a></li>
+            <li><a href="#guia-handoff-tecnico">Handoff Técnico</a></li>
         </ul>
     </nav>
 
@@ -422,6 +423,7 @@
                 <li><a href="#equipo-trabajo-seccion">Equipo de Trabajo</a></li>
                 <li><a href="#guia-daily-scrum">Guía Daily Scrum</a></li>
                 <li><a href="#guia-puntuacion-seccion">¿Cómo puntuamos las HU?</a></li>
+                <li><a href="#guia-handoff-tecnico">Handoff Técnico</a></li>
             </ul>
     </nav>
 
@@ -767,6 +769,152 @@
 
             </section>
         </section>
+
+        <section id="guia-handoff-tecnico" class="section" style="display: none;">
+  <h2>3. ✅ Ceremonia: Handoff Técnico</h2>
+
+  <h3>🌍 Objetivo</h3>
+  <p>Presentar oficialmente un desarrollo finalizado al equipo funcional (BA), QAs y desarrolladores, con el fin de validar su completitud técnica y funcional, aclarar dudas y habilitar el paso a pruebas y revisión funcional.</p>
+
+  <h3>💼 Responsables</h3>
+  <ul>
+    <li>BA (Juan / Daniel): Dirige la sesión, valida funcionalidad y registra comentarios. (Lidera la sesión)</li>
+    <li>Scrum Master (Juan / Daniel): Responsable del agendamiento y gestión del seguimiento posterior si aplica (No lidera la sesión)</li>
+    <li>Desarrollador asignado: Expone el desarrollo, responde dudas, y hace entrega oficial.</li>
+    <li>BA (Juan / Daniel) - QA asignado: Verifica que los criterios de aceptación estén cubiertos.</li>
+    <li>Equipo técnico (opcional): Participa si hubo impactos o dependencias cruzadas.</li>
+  </ul>
+
+  <h3>🧑‍🤝‍🧑 Asistentes</h3>
+  <ul>
+    <li><strong>Obligatorios:</strong>
+      <ul>
+	  <p></p>
+        <li>Desarrollador asignado</li>
+        <li>QA asignado</li>
+        <li>BA (Juan / Daniel)</li>
+      </ul>
+    </li>
+    <li><strong>Opcionales (según el caso):</strong>
+      <ul>
+	  <p></p>
+        <li>Otros desarrolladores involucrados</li>
+        <li>Product Owner (si se requiere validación funcional inmediata)</li>
+        <li>Líder Técnico</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>⏱️ Duración estimada</h3>
+  <p>15–30 minutos por historia Como máximo</p>
+
+  <h3>💻 Plataforma de comunicación</h3>
+  <p>Microsoft Teams</p>
+
+  <h3>📝 Paso a paso de la ceremonia</h3>
+  <ol>
+    <li><strong>Convocatoria</strong>
+      <ul>
+	  <p></p>
+        <li>El Scrum Master (Juan / Daniel) agenda la sesión con los participantes clave. La fecha del Handoff se define en el planning.</li>
+        <li>Se debe hacer dentro de las siguientes 24h una vez la historia esté en “Desarrollo Finalizado”.</li>
+      </ul>
+    </li>
+    <li><strong>Inicio de la sesión</strong>
+      <ul>
+	  <p></p>
+        <li>El BA (Juan / Daniel) da apertura, confirma asistentes y recuerda el objetivo.</li>
+        <li>El desarrollador comienza su presentación.</li>
+      </ul>
+    </li>
+    <li><strong>Presentación del desarrollo</strong>
+      <ul>
+	  <p></p>
+        <li>El desarrollador hace una demostración funcional y técnica.</li>
+        <li>Se recomienda hacerla en vivo, si no es posible, debe grabarse previamente en el ambiente de DEV o QA.</li>
+        <li>Se deben cubrir todos los criterios de aceptación.</li>
+      </ul>
+    </li>
+    <li><strong>Validación de QA</strong>
+      <ul>
+	  <p></p>
+        <li>El QA asignado indica si ve completitud en el cubrimiento funcional y técnico.</li>
+        <li>Puede hacer preguntas o sugerencias.</li>
+      </ul>
+    </li>
+    <li><strong>Ronda de dudas o aclaraciones</strong>
+      <ul>
+	  <p></p>
+        <li>Se abren 5 minutos para dudas técnicas, funcionales o de negocio.</li>
+        <li>Si hay temas de fondo que se extiendan, se agendan por separado.</li>
+      </ul>
+    </li>
+    <li><strong>Entrega oficial</strong>
+      <ul>
+	  <p></p>
+        <li>El desarrollador confirma que la historia está lista para revisión funcional.</li>
+        <li>El BA acepta oficialmente la entrega.</li>
+        <li>Se deja constancia (verbal o escrita en Teams) de que la HU pasa a validación QA.</li>
+        <li>El Dev Actualiza la HU en el tablero azure para “Ready to QA”</li>
+      </ul>
+    </li>
+  </ol>
+
+<h3>👍 Buenas prácticas</h3>
+<ul>
+  <li style="padding-left: 20px;">Compartir el enlace a la HU y PR en la invitación.</li>
+  <li style="padding-left: 20px;">Hacer la demo directamente desde el ambiente de DEV o QA.</li>
+  <li style="padding-left: 20px;">Grabar la sesión en caso de ausencias.</li>
+  <li style="padding-left: 20px;">Usar un checklist de criterios de aceptación para asegurar completitud.</li>
+  <li style="padding-left: 20px;">Registrar tareas pendientes o aclaraciones en Teams al final de la sesión.</li>
+</ul>
+
+  <h3>📊 Métricas de efectividad (Responsable: BA – Juan / Daniel)</h3>
+  <ul>
+  
+    <li style="padding-left: 20px;">% de historias aceptadas sin observaciones post Handoff</li>
+    <li style="padding-left: 20px;">% de handoffs completados en menos de 24h tras finalizar desarrollo</li>
+    <li style="padding-left: 20px;">Cantidad de handoffs re-agendados por falta de preparación</li>
+    <li style="padding-left: 20px;">Cantidad de handoffs re-agendados por falta de algún criterio inconcluso.</li>
+  </ul>
+
+  <h3>🔎 Ejemplo práctico – Caso HU-5234</h3>
+  <ul>
+    <li><strong>Día 0: Finalización del desarrollo</strong>
+      <ul>
+	  <p></p>
+        <li style="padding-left: 20px;">Cristian (Dev) mueve la HU-5234 a “Desarrollo Finalizado”.</li>
+        <li style="padding-left: 20px;">Informa en el canal de Teams que está lista.</li>
+      </ul>
+    </li>
+    <li><strong>Día 1: Agendamiento</strong>
+      <ul>
+	  <p></p>
+        <li style="padding-left: 20px;">Juan- Daniel  (Scrum Master) agenda el Handoff para el siguiente día, incluyendo a Cristian, Aura (QA), LT´s  y los asistentes pertinentes.</li>
+        <li style="padding-left: 20px;">Se adjunta el enlace al PR y ambiente.</li>
+      </ul>
+    </li>
+    <strong>Día 2: Handoff</strong>
+      <ul>
+	  <p></p>
+        <li style="padding-left: 20px;">BA inicia la sesión en Teams.</li>
+        <li style="padding-left: 20px;">Cristian DEV presenta la funcionalidad desde QA.</li>
+        <li style="padding-left: 20px;">Aura  QA hace preguntas sobre flujos alternos, valida contra criterios.</li>
+        <li style="padding-left: 20px;">BA confirma que se cubrieron todos los puntos.</li>
+        <li style="padding-left: 20px;">Cristian DEV  hace entrega oficial.</li>
+        <li style="padding-left: 20px;">BA registra en Teams que la HU queda en validación QA.</li>
+        <li style="padding-left: 20px;">Cristian DEV Mueve la HU en tablero Azure “Ready to QA”</li>
+      </ul>
+    </li>
+    <li><strong>Día 3: Validación</strong>
+      <ul>
+	  <p></p>
+        <li style="padding-left: 20px;">Aura QA inicia pruebas con base en lo visto.</li>
+        <li style="padding-left: 20px;">No se detectan errores y se mueve a “Listo para Validación Funcional”.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
     </main>
 
     <footer>
