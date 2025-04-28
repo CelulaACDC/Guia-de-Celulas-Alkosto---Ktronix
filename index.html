@@ -1115,6 +1115,33 @@
     </div>
   </form>
 </section>
+
+	<!-- Scripts para mostrar/ocultar campos -->
+<script>
+  const resultado = document.getElementById('resultado');
+  const motivoDevuelto = document.getElementById('motivoDevuelto');
+  const motivo = document.getElementById('motivo');
+  const otroMotivo = document.getElementById('otroMotivo');
+
+  resultado.addEventListener('change', function () {
+    if (this.value === 'devuelto') {
+      motivoDevuelto.style.display = 'block';
+    } else {
+      motivoDevuelto.style.display = 'none';
+      otroMotivo.style.display = 'none';
+    }
+  });
+
+  motivo.addEventListener('change', function () {
+    if (this.value === 'otro') {
+      otroMotivo.style.display = 'block';
+    } else {
+      otroMotivo.style.display = 'none';
+    }
+  });
+</script>
+
+	
     <h2>🖼️ Escenarios Prácticos</h2>
 
     <h3>📖 Ejemplo Narrativo 1 – HU Aprobada ✅</h3>
