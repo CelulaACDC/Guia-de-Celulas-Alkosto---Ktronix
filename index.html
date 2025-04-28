@@ -1042,28 +1042,44 @@
     </ul>
 
     <h2>📋 Registro de Motivos de Devolución</h2>
-    <form>
+    <h1>📝 Registro de Motivos de Devolución</h1>
+
+    <form id="formularioMotivos">
         <label for="idHU">ID de Historia de Usuario (HU)</label>
-        <input type="text" id="idHU" name="idHU" placeholder="Ejemplo: HU_EP_GEO_103" required>
+        <input type="text" id="idHU" name="idHU" placeholder="Ejemplo: HU_EP_GEO_10310" required>
 
         <label for="stakeholder">Stakeholder que realizó la validación</label>
         <input type="text" id="stakeholder" name="stakeholder" placeholder="Nombre completo" required>
 
-        <label for="resultado">Resultado de la Validación</label>
-        <select id="resultado" name="resultado" required>
+        <label for="resultadoValidacion">Resultado de la Validación</label>
+        <select id="resultadoValidacion" name="resultadoValidacion" required onchange="mostrarMotivo()">
             <option value="">-- Selecciona --</option>
-            <option value="Aprobada">Aprobada</option>
-            <option value="No Aprobada">No Aprobada</option>
+            <option value="Aprobada">✅ Aprobada</option>
+            <option value="Devuelta">❌ Devuelta</option>
         </select>
 
-        <label for="comentarios">Comentarios</label>
-        <textarea id="comentarios" name="comentarios" rows="4" placeholder="Comentarios adicionales, sugerencias, etc."></textarea>
+        <div class="motivo-container" id="motivoContainer">
+            <label for="motivoDevolucion">Motivo de Devolución</label>
+            <textarea id="motivoDevolucion" name="motivoDevolucion" rows="4" placeholder="Comentarios adicionales, sugerencias, etc."></textarea>
+        </div>
 
         <label for="observaciones">Observaciones (opcional)</label>
-        <textarea id="observaciones" name="observaciones" rows="2"></textarea>
+        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Detalles adicionales, observaciones complementarias"></textarea>
 
         <button type="submit">Registrar resultado</button>
     </form>
+
+	<script>
+    function mostrarMotivo() {
+        var resultado = document.getElementById("resultadoValidacion").value;
+        var motivoContainer = document.getElementById("motivoContainer");
+        if (resultado === "Devuelta") {
+            motivoContainer.style.display = "block";
+        } else {
+            motivoContainer.style.display = "none";
+        }
+    }
+</script>
 
     <h2>🖼️ Escenarios Prácticos</h2>
 
