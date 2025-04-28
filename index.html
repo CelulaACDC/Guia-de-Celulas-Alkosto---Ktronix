@@ -1041,46 +1041,80 @@
         <li>Número de observaciones menores que no bloquearon la aprobación.</li>
     </ul>
 
-    <h2>📋 Registro de Motivos de Devolución</h2>
-    <h1>📝 Registro de Motivos de Devolución</h1>
+   <section id="formulario-devoluciones" class="p-8 bg-gray-50 rounded-2xl shadow-lg mb-12">
+  <h2 class="text-3xl font-extrabold mb-6 text-gray-800">📄 Registro de Motivos de Devolución</h2>
 
-    <form id="formularioMotivos">
-        <label for="idHU">ID de Historia de Usuario (HU)</label>
-        <input type="text" id="idHU" name="idHU" placeholder="Ejemplo: HU_EP_GEO_10310" required>
+  <form class="space-y-8" action="#" method="POST">
+    <!-- Identificación de la Historia de Usuario -->
+    <div>
+      <label for="idHU" class="block text-lg font-semibold text-gray-700 mb-2">ID de Historia de Usuario (HU)</label>
+      <input type="text" id="idHU" name="idHU" required
+             class="mt-1 p-3 block w-full border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none"
+             placeholder="Ejemplo: HU_EP_GEO_10310">
+    </div>
 
-        <label for="stakeholder">Stakeholder que realizó la validación</label>
-        <input type="text" id="stakeholder" name="stakeholder" placeholder="Nombre completo" required>
+    <!-- Nombre del Stakeholder -->
+    <div>
+      <label for="stakeholder" class="block text-lg font-semibold text-gray-700 mb-2">Stakeholder que realizó la validación</label>
+      <input type="text" id="stakeholder" name="stakeholder" required
+             class="mt-1 p-3 block w-full border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none"
+             placeholder="Nombre completo">
+    </div>
 
-        <label for="resultadoValidacion">Resultado de la Validación</label>
-        <select id="resultadoValidacion" name="resultadoValidacion" required onchange="mostrarMotivo()">
-            <option value="">-- Selecciona --</option>
-            <option value="Aprobada">✅ Aprobada</option>
-            <option value="Devuelta">❌ Devuelta</option>
-        </select>
+    <!-- Resultado de la Validación -->
+    <div>
+      <label for="resultado" class="block text-lg font-semibold text-gray-700 mb-2">Resultado de la Validación</label>
+      <select id="resultado" name="resultado" required
+              class="mt-1 block w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none">
+        <option value="">-- Selecciona --</option>
+        <option value="aprobado">✅ Aprobado</option>
+        <option value="devuelto">❌ Devuelto</option>
+      </select>
+    </div>
 
-        <div class="motivo-container" id="motivoContainer">
-            <label for="motivoDevolucion">Motivo de Devolución</label>
-            <textarea id="motivoDevolucion" name="motivoDevolucion" rows="4" placeholder="Comentarios adicionales, sugerencias, etc."></textarea>
-        </div>
+    <!-- Motivo de Devolución (solo si es Devuelto) -->
+    <div id="motivoDevuelto" style="display: none;">
+      <label for="motivo" class="block text-lg font-semibold text-gray-700 mb-2">Motivo de Devolución</label>
+      <select id="motivo" name="motivo"
+              class="mt-1 block w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none">
+        <option value="">-- Selecciona un motivo --</option>
+        <option value="error_funcional">Error funcional</option>
+        <option value="defecto_detectado">Defecto detectado QA</option>
+        <option value="criterios_incompletos">Criterios de aceptación incompletos</option>
+        <option value="desviacion_requerimiento">Desviación de requerimiento</option>
+        <option value="experiencia_usuario_deficiente">Experiencia de usuario deficiente</option>
+        <option value="dependencias_no_resueltas">Dependencias no resueltas</option>
+        <option value="incongruencia_proceso">Incongruencia con procesos del negocio</option>
+        <option value="falta_documentacion">Falta de documentación</option>
+        <option value="otro">Otro (especificar)</option>
+      </select>
 
-        <label for="observaciones">Observaciones (opcional)</label>
-        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Detalles adicionales, observaciones complementarias"></textarea>
+      <!-- Campo para describir si selecciona "Otro" -->
+      <div id="otroMotivo" style="display: none;" class="mt-4">
+        <label for="descripcionOtro" class="block text-lg font-semibold text-gray-700 mb-2">Describe el motivo</label>
+        <textarea id="descripcionOtro" name="descripcionOtro" rows="4"
+                  class="mt-1 p-3 block w-full border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="Detalle el motivo específico..."></textarea>
+      </div>
+    </div>
 
-        <button type="submit">Registrar resultado</button>
-    </form>
+    <!-- Observaciones adicionales -->
+    <div>
+      <label for="observaciones" class="block text-lg font-semibold text-gray-700 mb-2">Observaciones (opcional)</label>
+      <textarea id="observaciones" name="observaciones" rows="4"
+                class="mt-1 p-3 block w-full border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Comentarios adicionales, sugerencias, etc."></textarea>
+    </div>
 
-	<script>
-    function mostrarMotivo() {
-        var resultado = document.getElementById("resultadoValidacion").value;
-        var motivoContainer = document.getElementById("motivoContainer");
-        if (resultado === "Devuelta") {
-            motivoContainer.style.display = "block";
-        } else {
-            motivoContainer.style.display = "none";
-        }
-    }
-</script>
-
+    <!-- Botón de envío -->
+    <div class="pt-6">
+      <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold py-3 px-6 rounded-2xl shadow-lg transition duration-300">
+        Registrar resultado
+      </button>
+    </div>
+  </form>
+</section>
     <h2>🖼️ Escenarios Prácticos</h2>
 
     <h3>📖 Ejemplo Narrativo 1 – HU Aprobada ✅</h3>
