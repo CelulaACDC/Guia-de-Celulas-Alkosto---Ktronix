@@ -915,6 +915,50 @@
             </section>
         </section>
 
+	    <section style="font-family: Arial, sans-serif; margin: 2rem;">
+  <h2 style="color: #005691;">📊 Métricas clave para evaluar la puntuación de historias de usuario</h2>
+
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+    <h3 style="color: #003f5c;">1. Precisión en la estimación</h3>
+    <p><strong>¿Qué mide?</strong> Qué tan cerca estuvo la estimación de la realidad.</p>
+    <p><strong>Fórmula:</strong> |Estimado – Real| / Real * 100</p>
+    <p><strong>Ejemplo práctico:</strong> Se estimó en 5 días y se completó en 4 días: <code>Desviación = |5 - 4| / 4 * 100 = 25%</code></p>
+    <p><strong>Meta:</strong> Que al menos el 80% de las historias tengan una desviación menor al 15%.</p>
+  </div>
+
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+    <h3 style="color: #003f5c;">2. Historias con desviación crítica (>25%)</h3>
+    <p><strong>¿Qué mide?</strong> Cuántas historias fueron estimadas muy mal.</p>
+    <p><strong>Fórmula:</strong> (# historias con desviación > 25%) / (total de historias cerradas)</p>
+    <p><strong>Ejemplo práctico:</strong> Si se cerraron 20 historias en el sprint y 6 tuvieron más del 25% de desviación, la métrica es <code>6 / 20 = 30%</code></p>
+    <p><strong>Meta:</strong> Menos del 10% con desviaciones críticas.</p>
+  </div>
+
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+    <h3 style="color: #003f5c;">3. Promedio de desviación por miembro</h3>
+    <p><strong>¿Qué mide?</strong> Si hay miembros que estiman sistemáticamente mal.</p>
+    <p><strong>Ejemplo práctico:</strong> Cristian trabajó en 4 historias con estas desviaciones: 10%, 5%, 30%, 0%. Su promedio es: <code>(10 + 5 + 30 + 0) / 4 = 11.25%</code></p>
+    <p><strong>Meta:</strong> Promedio general menor al 15% por persona.</p>
+  </div>
+
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+    <h3 style="color: #003f5c;">4. Distribución de puntuación por criterio</h3>
+    <p><strong>¿Qué mide?</strong> Si se están usando bien los valores 1 a 5 o se abusa de los altos.</p>
+    <p><strong>Ejemplo práctico:</strong> Si el 70% de las historias tienen esfuerzo 4 o 5, es probable que estén sobreestimando.</p>
+    <p><strong>Meta:</strong> Distribución razonable en el uso de valores (evitar sesgos sistemáticos).</p>
+  </div>
+
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+    <h3 style="color: #003f5c;">5. Tasa de historias reestimadas post-Handoff</h3>
+    <p><strong>¿Qué mide?</strong> Si muchas historias están mal entendidas o mal estimadas al llegar al BA.</p>
+    <p><strong>Fórmula:</strong> historias reestimadas / total historias entregadas al BA</p>
+    <p><strong>Ejemplo práctico:</strong> Si se entregaron 10 historias y 3 fueron reestimadas por errores, la tasa es <code>3 / 10 = 30%</code></p>
+    <p><strong>Meta:</strong> No más del 5%</p>
+  </div>
+
+</section>
+
+
         <section id="guia-handoff-tecnico" class="section" style="display: none;">
   <h2>3. ✅ Ceremonia: Handoff Técnico</h2>
 
