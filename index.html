@@ -671,66 +671,162 @@
             <p>Transformar criterios cualitativos en una estimación cuantitativa de esfuerzo (en <strong>Puntos de Historia</strong>) que luego se traduzca en tiempo estimado (<strong>días</strong> y <strong>horas</strong>).</p>
 
             <h3>📋 Criterios de Evaluación</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Criterio</th>
-                        <th>Pregunta Guía</th>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Complejidad técnica</strong></td>
-                        <td>¿Qué tan difícil es técnicamente implementar esta historia?</td>
-                        <td>Muy baja</td>
-                        <td>Baja</td>
-                        <td>Moderada</td>
-                        <td>Alta</td>
-                        <td>Muy alta</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Esfuerzo estimado</strong></td>
-                        <td>¿Cuánto trabajo implica construir esta historia?</td>
-                        <td>Muy bajo</td>
-                        <td>Bajo</td>
-                        <td>Moderado</td>
-                        <td>Alto</td>
-                        <td>Muy alto</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Riesgo / Incertidumbre</strong></td>
-                        <td>¿Qué tanto sabemos sobre lo que se debe hacer? ¿Hay posibles bloqueos?</td>
-                        <td>Muy bajo</td>
-                        <td>Bajo</td>
-                        <td>Moderada</td>
-                        <td>Alto</td>
-                        <td>Muy alto</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Impacto en el negocio</strong></td>
-                        <td>¿Qué tan relevante es esta historia para el cliente o los objetivos del sprint?</td>
-                        <td>Muy bajo</td>
-                        <td>Bajo</td>
-                        <td>Moderado</td>
-                        <td>Alto</td>
-                        <td>Muy alto</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Dependencias</strong></td>
-                        <td>¿Depende de otros equipos o procesos?</td>
-                        <td>Sin dependencias</td>
-                        <td>Bajas</td>
-                        <td>Moderadas</td>
-                        <td>Altas</td>
-                        <td>Muy altas</td>
-                    </tr>
-                </tbody>
-            </table>
+            <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef1f5;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #004085;
+      margin-bottom: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-size: 18px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    td {
+      padding: 15px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+      white-space: pre-wrap;
+    }
+
+    .criterio {
+      background-color: #f1f3f5;
+      font-weight: bold;
+      font-size: 16px;
+      border-left: 5px solid #007bff;
+    }
+  </style>
+
+		<h1>Criterios de Evaluación - Estimación Ágil</h1>
+
+  <table>
+    <tr><th>1. Complejidad Técnica</th></tr>
+    <tr>
+      <td class="criterio">¿Qué tan complicado es técnicamente implementar esta historia de usuario?</td>
+    </tr>
+    <tr>
+      <td>
+1 – Muy baja: Implementación directa, sin lógica compleja ni desafíos técnicos.
+
+2 – Baja: Requiere algo de lógica o configuración, pero es estándar.
+
+3 – Media: Implica lógica moderada, manejo de errores, estructuras condicionales o integración con un sistema interno conocido.
+
+4 – Alta: Requiere diseño técnico, múltiples capas de lógica o nuevos componentes técnicos.
+
+5 – Muy alta: Supone retos técnicos grandes, nuevas tecnologías o investigación profunda.
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <tr><th>2. Esfuerzo Estimado</th></tr>
+    <tr>
+      <td class="criterio">¿Cuánto esfuerzo representa desarrollarla? (en términos de tiempo y trabajo total)</td>
+    </tr>
+    <tr>
+      <td>
+1 – Muy bajo: Se puede hacer en pocas horas, incluso menos de medio día.
+
+2 – Bajo: Toma cerca de un día de trabajo o menos.
+
+3 – Medio: Requiere entre 1 y 2 días de trabajo concentrado.
+
+4 – Alto: Involucra de 2 a 3 días de trabajo, posiblemente con revisión entre equipos.
+
+5 – Muy alto: Toma una semana o más, o es un trabajo extenso que debe dividirse.
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <tr><th>3. Riesgo / Incertidumbre</th></tr>
+    <tr>
+      <td class="criterio">¿Qué tan incierta o riesgosa es la historia por falta de información o variables desconocidas?</td>
+    </tr>
+    <tr>
+      <td>
+1 – Muy bajo: Todo está claro, no hay ambigüedades ni riesgos.
+
+2 – Bajo: Hay una o dos dudas menores, pero nada crítico.
+
+3 – Medio: Existen aspectos por definir que podrían impactar la implementación.
+
+4 – Alto: Varias ambigüedades o riesgos técnicos/comerciales.
+
+5 – Muy alto: Se sabe muy poco, puede haber cambios grandes o bloqueos serios.
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <tr><th>4. Frecuencia de Uso (Impacto en el Negocio)</th></tr>
+    <tr>
+      <td class="criterio">¿Qué tan seguido usarán los usuarios esta funcionalidad? (a mayor frecuencia, mayor valor de negocio)</td>
+    </tr>
+    <tr>
+      <td>
+1 – Muy baja: Funcionalidad usada muy esporádicamente o solo por usuarios internos.
+
+2 – Baja: Usada ocasionalmente, por un subconjunto pequeño de usuarios.
+
+3 – Media: Usada con cierta regularidad, por varios tipos de usuarios.
+
+4 – Alta: Usada frecuentemente, tiene impacto directo en la operación o satisfacción.
+
+5 – Muy alta: Funcionalidad central, usada a diario por todos o casi todos los usuarios.
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <tr><th>5. Dependencias</th></tr>
+    <tr>
+      <td class="criterio">¿Cuántas dependencias internas o externas hay para poder completar esta historia?</td>
+    </tr>
+    <tr>
+      <td>
+1 – Muy baja: Totalmente independiente.
+
+2 – Baja: Una dependencia sencilla, dentro del mismo equipo.
+
+3 – Media: Varias dependencias menores o una externa conocida.
+
+4 – Alta: Varias dependencias importantes, internas o externas.
+
+5 – Muy alta: Dependencias críticas o inciertas que pueden bloquear completamente.
+      </td>
+    </tr>
+  </table>
 
             <h3>🧠 Cálculo de Story Points</h3>
             <ol>
