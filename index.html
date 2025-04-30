@@ -946,6 +946,64 @@
   </div>
 </section>
 
+		    <div class="section">
+    <h2>5️⃣ Usar métricas históricas (velocidad y precisión)</h2>
+
+    <h3>🎯 Objetivo</h3>
+    <p>Aumentar la precisión de las estimaciones futuras utilizando el aprendizaje de nuestras propias entregas pasadas.</p>
+
+    <h3>📈 ¿Qué métricas usamos?</h3>
+    <ul>
+        <li><strong>1️⃣ Velocidad del equipo (Team Velocity)</strong><br>
+            <em>Cantidad de <strong>Story Points realmente completados</strong> por sprint.</em>
+            <ul>
+                <li>Se mide sprint a sprint.</li>
+                <li>Nos da una referencia del <strong>ritmo real</strong> de entrega de la célula.</li>
+                <li>Permite proyectar cuántos puntos podemos abordar en próximos sprints.</li>
+            </ul>
+        </li>
+        <li><strong>2️⃣ Precisión de estimación por Historia de Usuario (HU)</strong><br>
+            <em>Comparación entre <strong>Story Points estimados</strong> vs <strong>Story Points realmente consumidos</strong> (según esfuerzo registrado o revisión de realidad).</em>
+            <ul>
+                <li>Se mide HU por HU.</li>
+                <li><strong>Desviación</strong> = (Esfuerzo real – Estimado) / Estimado → Se expresa como porcentaje.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>🔄 ¿Cómo aplicamos estas métricas?</h3>
+    <table>
+        <thead>
+            <tr><th>Acción</th><th>Descripción</th><th>Responsable</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Revisión post-sprint</td><td>Revisar qué tan precisas fueron las estimaciones de las HUs completadas.</td><td>Scrum Master / BA</td></tr>
+            <tr><td>Registro de referencias</td><td>Registrar ejemplos de HUs reales con sus características y estimaciones cumplidas. (Repositorio de ejemplos)</td><td>BA / Scrum Master</td></tr>
+            <tr><td>Uso en futuras estimaciones</td><td>Al estimar una HU nueva, buscar referencias similares. Comparar tamaños y complejidad para ajustar.</td><td>Todo el equipo durante Planning</td></tr>
+        </tbody>
+    </table>
+
+    <h3>🛠️ Herramientas sugeridas</h3>
+    <ul>
+        <li><strong>Azure DevOps</strong>: Boards para ver puntos comprometidos vs completados.</li>
+        <li><strong>Registro de métricas</strong>: Hoja en <strong>Excel o DevOps Wiki</strong> donde guardamos ejemplos de HUs con su estimación real cumplida.</li>
+    </ul>
+
+    <h3>💡 Buenas prácticas</h3>
+    <ul>
+        <li>✅ Revisar <strong>mínimo las últimas 3 sprints</strong> para buscar referencias.</li>
+        <li>✅ Guardar ejemplos de <strong>HU tipo (chicas, medianas, grandes)</strong>.</li>
+        <li>✅ Si una HU se desvía más de <strong>±25%</strong>, documentar <strong>por qué</strong> (para aprender).</li>
+    </ul>
+
+    <h3>📚 Ejemplo práctico (Aplicación real)</h3>
+    <p>En Sprint 5, la HU “Integración de API de pagos” se estimó en <strong>5 puntos</strong> y se completó efectivamente en el sprint.<br>
+    En Sprint 8, aparece una HU nueva “Integración API de notificaciones” → Se consulta el histórico y se decide que es de complejidad similar → Se propone también <strong>5 puntos</strong>.</p>
+
+    <p><strong>Resumen:</strong><br><em>No estimamos desde cero → Aprovechamos la experiencia <strong>real</strong> de nuestro propio equipo.</em></p>
+</div>
+
+
             </section>
         </section>
 
